@@ -1,0 +1,2170 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 定义字体 */
+        @font-face 
+        {
+            font-family: '汉仪像素 11px U';  
+            src: url('HYPixel11pxU-2.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face 
+        {
+            font-family: 'Aa苹苹果果像素体';  
+            src: url('ziti.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+            font-family: "Aa苹苹果果像素体","汉仪像素 11px U";
+            overflow: hidden;
+        }
+
+        body,* {
+            font-family:"Aa苹苹果果像素体","汉仪像素 11px U";
+        }
+        
+        /* 主容器 */
+        .report-container {
+            width: 375px;
+            height: 812px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin: 0 auto;
+        }
+        
+        /* 页面容器 */
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .page.prev {
+            transform: translateX(100%);
+        }
+        
+        /* 导航按钮 */
+        .nav-button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 24px;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .prev-button {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .next-button {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        /* 页面指示器 */
+        .page-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+        }
+        
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .indicator-dot.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.2);
+        }
+        
+        /* 页面1样式 */
+        .page-1 
+        {
+            background-color: #ffffff;
+        }
+        
+        .page-1 .background {
+            top: 0;
+            left: -84px;
+            width: 542px;
+            height: 812px;
+            aspect-ratio: 0.67;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-1 .text-wrapper {
+            position: absolute;
+            top: 200px;
+            left: 33px;
+            width: 144px;
+            text-shadow: 0px 4px 4px #00000080;
+            font-weight: 400;
+            color: #feffed;
+            font-size: 64px;
+            letter-spacing: 0;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        .page-1 .div {
+            top: 276px;
+            text-shadow: 0px 4px 4px #00000080;
+            color: #ffffff;
+            font-size: 48px;
+            position: absolute;
+            left: 33px;
+            width: 308px;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+        
+        .page-1 .text-wrapper-2 {
+            top: 341px;
+            text-shadow: 0px 4px 4px #00000040;
+            color: #fdffda;
+            font-size: 24px;
+            position: absolute;
+            left: 33px;
+            width: 308px;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+        
+        .page-1 .img {
+            top: 194px;
+            left: 166px;
+            width: 88px;
+            height: 88px;
+            aspect-ratio: 1;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-1 .frame {
+            position: absolute;
+            top: 646px;
+            left: 77px;
+            width: 220px;
+            height: 72px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .page-1 .frame:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        /* 页面2样式 */
+        .page-2 {
+            background: white;
+        }
+        
+        .page-2 .image-1 {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+	        z-index: 1;
+            object-fit: contain;
+            aspect-ratio: 0.67
+        }
+        
+        .page-2 .image-2 {
+            width: 347.15px;
+            height: 477.34px;
+            left: 14px;
+            top: 112px;
+            position: absolute;
+	        z-index: 2;
+        }
+        
+        .page-2 .gradient-1 {
+            width: 232px;
+            height: 332px;
+            left: 72px;
+            top: 179px;
+            position: absolute;
+            background: linear-gradient(180deg, #D3A873 0%, #DDB881 45%, #DCB681 90%, #CB9D6A 100%);
+        }
+        
+        .page-2 .gradient-2 {
+            width: 231.82px;
+            height: 331.93px;
+            left: 71.79px;
+            top: 178.68px;
+            position: absolute;
+            background: radial-gradient(ellipse 50.00% 50.00% at 50.00% 50.00%, rgba(153, 135.80, 111.81, 0) 0%, rgba(255, 226.33, 186.35, 0) 90%);
+        }
+        
+        .page-2 .glow {
+            width: 212px;
+            height: 256px;
+            left: 82px;
+            top: 210px;
+            position: absolute;
+            background: radial-gradient(ellipse 50.00% 50.00% at 50.00% 50.00%, #FFF8DA 0%, rgba(237.50, 215.32, 173.11, 0.60) 73%, rgba(220, 183, 128, 0.20) 100%);
+            border-radius: 9999px;
+        }
+
+        .page2-bottom-arrows {
+            position: absolute;
+            bottom: 60px; /* 调整位置，高于页面指示器 */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .page2-bottom-arrows .arrow-button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: none;
+            box-shadow: none;
+            min-width: auto;
+            text-align: center;
+            letter-spacing: 4px;
+            opacity:0.7;
+        }
+
+        .page2-bottom-arrows .arrow-button:hover {
+            background: transparent !important;
+            border-color: transparent !important;
+            transform: translateY(-3px); 
+            opacity: 1; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+        }
+
+        .page-2 .page-indicator {
+            bottom: 40px;
+        }
+        
+        /* 页面3样式 */
+        .page-3 {
+            background: white;
+        }
+        
+        .page-3 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: contain;
+            aspect-ratio: 0.67
+        }
+        
+        .page-3 .bottom-text {
+            left: 50%;
+            top: 615px;
+            position: absolute;
+	        transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        
+        .page-3 .title-text {
+            width: 308px;
+            height: 116px;
+            left: 34px;
+            top: 52px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-3 .stats-container {
+            width: 344px;
+            left: 18px;
+            top: 194px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .page-3 .stats-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .page-3 .stat-card {
+            width: 162px;
+            height: 120px;
+            background: #FFEAC1;
+            border-radius: 10px;
+            position: relative;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .page-3 .stat-title {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .page-3 .stat-value {
+            color: #4B1715;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .page-3 .stat-icon {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .page-3 .stat-icon img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .page-3 .double-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .page-3 .double-icons img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .page3-bottom-arrows {
+            position: absolute;
+            bottom: 50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .page3-bottom-arrows .arrow-button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: none;
+            box-shadow: none;
+            min-width: auto;
+            text-align: center;
+            letter-spacing: 4px;
+            opacity:0.7;
+        }
+
+        .page3-bottom-arrows .arrow-button:hover {
+            background: transparent;
+            border-color: transparent ;
+            transform: translateY(-3px); 
+            opacity: 1; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+        }
+
+        .page-3 .page-indicator {
+            bottom: 20px;
+        }
+        
+        /* 页面4样式 */
+        .page-4 {
+            background: #1A3732;
+        }
+        
+        .page-4 .bg {
+            width: 350px;
+            height: 760px;
+            left: 0px;
+            top: 60px;
+            position: absolute;
+            object-fit: contain;
+            image-rendering: crisp-edges;  /* 添加图片渲染优化 */
+            z-index: 2;
+        }
+
+        .page-4 .blackboard {
+            width: 375px;
+            height: 350px;
+            left: 0px;
+            top: 461px;
+            position: absolute;
+            object-fit: cover;
+            opacity: 0.9;
+            z-index: 1;
+        }
+        
+        .page-4 .main-title {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 354px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .page-4 .sub-title {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .page-4 .pie-chart {
+            width: 250px;
+            height: 250px;
+            left: 65px;
+            top: 200px;
+            position: absolute;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #F4C078 0deg 176.724deg,
+                #EEFFAE 176.724deg 306.864deg,
+                #D9FFC9 306.864deg 342.216deg,
+                #65DEEC 342.216deg 350.856deg,
+                #F3ACAD 350.856deg 356.616deg,
+                #88E2CD 356.616deg 358.488deg,
+                #F59B51 358.488deg 360deg
+            );
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .page-4 .pie-center {
+            width: 70px;
+            height: 70px;
+            background: #1A3732;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .page-4 .data-label {
+            position: absolute;
+            line-height: 1.3;
+            z-index: 10;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .page-4 .label-dark {
+            color: #451416;
+            font-weight: 600;
+        }
+        
+        .page-4 .label-light {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .page-4 .label-test { 
+            left: 20px;
+            top: 220px;
+        }
+        
+        .page-4 .label-ai { 
+            left: 150px;
+            top: 130px;
+        }
+        
+        .page-4 .label-sign { 
+            left: 230px;
+            top: 300px;
+        }
+        
+        .page-4 .label-homework { 
+            left: 100px;
+            top: 330px;
+        }
+        
+        .page-4 .label-message { 
+            left: 305px;
+            top: 180px;
+        }
+        
+        .page-4 .label-vote { 
+            left: 310px;
+            top: 420px;
+        }
+        
+        .page-4 .label-discuss { 
+            left: 20px;
+            top: 430px;
+        }
+        
+        .page-4 .data-type {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .page-4 .data-count {
+            font-size: 12px;
+            margin: 2px 0;
+        }
+        
+        .page-4 .data-percent {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .page-4 .divider-line {
+            position: absolute;
+            left: 20px;
+            top: 500px;
+            width: 335px;
+            height: 1px;
+            border-top: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+        
+        .page-4 .bottom-text-arrow-group {
+            position: absolute;
+            right: 20px;  
+            bottom: 120px;  
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;  
+            gap: 10px;  
+            z-index: 100;
+        }
+        .page-4 .bottom-right-text {
+            width: 188px;
+            text-align: right;
+            color: white;
+            font-size: 18px;
+            line-height: 1.4;
+            opacity: 0.9;
+            margin: 0;  
+            position: static;  
+        }
+
+        .page-4 .page4-bottom-arrows {
+            display: flex;
+            justify-content: flex-end;  
+            width: 100%;
+        }
+
+        .page-4 .page4-bottom-arrows .arrow-button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: none;
+            box-shadow: none;
+            min-width: auto;
+            text-align: center;
+            letter-spacing: 4px;
+            opacity: 0.7;
+        }
+
+        .page-4 .page4-bottom-arrows .arrow-button:hover {
+            background: transparent ;
+            border-color: transparent ;
+            transform: translateY(-3px);
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 页面5样式 */
+        .page-5 {
+            background: white;
+        }
+        
+        .page-5 .bg-decoration {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0;
+            position: absolute;
+            object-fit: contain;
+            opacity: 1;
+        }
+        
+        .page-5 .gold-bar {
+            width: 188px;
+            height: 53px;
+            left: 93px;
+            top: 218px;
+            position: absolute;
+            background: #EFBE86;
+            border-radius: 8px;
+        }
+        
+        .page-5 .title-area {
+            width: 330px;
+            height: 88px;
+            left: 24px;
+            top: 33px;
+            position: absolute;
+            background: #FFEAC1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .page-5 .main-title {
+            text-align: center;
+            color: #451416;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .page-5 .college-container {
+            width: 289px;
+            left: 43px;
+            top: 241px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .page-5 .college-card {
+            width: 100%;
+            height: 110px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .page-5 .power-college {
+            background: #FFF3DB;
+        }
+        
+        .page-5 .math-college {
+            background: #DBF1FF;
+        }
+        
+        .page-5 .math2-college {
+            background: #E0DBFF;
+        }
+        
+        .page-5 .college-header {
+            left: 13px;
+            top: 13px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-5 .college-icon {
+            width: 24px;
+            height: 32px;
+        }
+        
+        .page-5 .college-name {
+            color: #4B1715;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .page-5 .power-college .college-name {
+            color: #E2B90E;
+        }
+        
+        .page-5 .math-college .college-name {
+            color: #1489FF;
+        }
+        
+        .page-5 .math2-college .college-name {
+            color: #8328A1;
+        }
+        
+        .page-5 .stats-area {
+            left: 13px;
+            top: 49px;
+            position: absolute;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .page-5 .stat-card {
+            padding: 8px ;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 80px;
+            text-align: center;
+        }
+        
+        .page-5 .stat-number {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .page-5 .stat-type {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        /* 页面6样式 */
+        .page-6 {
+            background: #1a1a1a;
+        }
+        
+        .page-6 .stars-bg {
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: fill;
+            opacity: 0.95;
+        }
+        
+        .page-6 .center-text {
+            width: 286px;
+            height: 155px;
+            left: 50%;
+            top: 290px;
+            position: absolute;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .page-6 .main-title {
+            font-size: 48px;
+            font-weight: 600;
+            font-family:"汉仪像素 11px U";
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .page-6 .next-arrow {
+            width: 0px;
+            height: 164px;
+            left: 277px;
+            top: 628px;
+            position: absolute;
+            transform: rotate(90deg);
+            transform-origin: top left;
+            text-align: center;
+            color: white;
+            font-size: 64px;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+        
+        .page-6 .next-arrow:hover {
+            opacity: 1;
+            transform: rotate(90deg) translateX(5px);
+        }
+         
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .page-6 .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+            animation: shoot 8s infinite ease-in-out;
+        }
+        
+        @keyframes shoot {
+            0% { transform: translateX(-100px) translateY(0) rotate(-30deg); opacity: 0; }
+            10% { opacity: 1; }
+            20% { transform: translateX(300px) translateY(100px) rotate(-30deg); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        /* 页面7样式 */
+        .page-7 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: -0px;
+            position: absolute;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .page-7 .book-image {
+            width: 366.48px;
+            height: 503.92px;
+            left: 9px;
+            top: 115px;
+            position: absolute;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .page-7 .Arrow-image {
+            width: 208px;
+            height: 2px;
+            left: 80px;
+            top: 360px;
+            position: absolute;
+            object-fit: cover;
+            z-index:100;
+        }
+        
+        .page-7 .text-time-spent {
+            left: 102px;
+            top: 193px;
+            position: absolute;
+            text-align: center;
+            color: #7C4D37;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        
+        .page-7 .text-login-count {
+            left: 148px;
+            top: 394px;
+            position: absolute;
+            text-align: center;
+            color: #7C4D37;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        
+        .page-7 .text-movie-comparison {
+            left: 81px;
+            top: 653px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .page-7 .text-learning-choice {
+            left: 108px;
+            top: 695px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .page-7 .data-hours {
+            left: 110px;
+            top: 239px;
+            position: absolute;
+            text-align: center;
+            color: #451416;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .page-7 .data-logins {
+            left: 145px;
+            top: 444px;
+            position: absolute;
+            text-align: center;
+            color: #451416;
+            font-size: 34px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .page-7 .data-daily {
+            width: 104px;
+            height: 43px;
+            left: 135px;
+            top: 297px;
+            position: absolute;
+            opacity: 0.77;
+            text-align: center;
+            color: #451416;
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        
+        .page-7 .top-icon {
+            width: 139px;
+            height: 139px;
+            left: 122px;
+            top: 0px;
+            position: absolute;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        /* 页面8样式 */
+        .page-8 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-8 .book-image {
+            width: 90%;
+            height: 90%;
+            left: 40px;
+            top: 270px;
+            position: absolute;
+            object-fit: contain;
+            z-index:100;
+        }
+        
+        .page-8 .text-year {
+            left: 35px;
+            top: 111px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-8 .text-time {
+            left: 35px;
+            top: 201px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 50px;
+        }
+        
+        .page-8 .text-study {
+            left: 35px;
+            top: 261px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 28px;
+        }
+        
+        .page-8 .text-detail {
+            left: 35px;
+            top: 346px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-8 .text-quote {
+            left: 35px;
+            top: 523px;
+            position: absolute;
+            color: white;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        /* 页面9样式 */
+        .page-9 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-9 .bg-overlay {
+            width: 827px;
+            height: 827px;
+            left: -229px;
+            top: -8px;
+            position: absolute;
+            background: rgba(59, 51, 86, 0.16);
+        }
+        
+        .page-9 .data-homework {
+            left: 123px;
+            top: 132px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-9 .label-homework {
+            left: 148px;
+            top: 190px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-9 .data-tests {
+            left: 123px;
+            top: 493px;
+            position: absolute;
+            text-align: center;
+            color: #0D0D0D;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-9 .label-tests {
+            left: 148px;
+            top: 553px;
+            position: absolute;
+            text-align: center;
+            color: #0D0D0D;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-9 .glow-effect {
+            width: 360px;
+            height: 137px;
+            left: 15px;
+            top: 287px;
+            position: absolute;
+            opacity: 0.52;
+            background: radial-gradient(ellipse 50% 50% at 50% 50%, white 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        .page-9 .text-line1 {
+            left: 85px;
+            top: 316px;
+            position: absolute;
+            color: black;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-9 .text-line2 {
+            left: 73px;
+            top: 366px;
+            position: absolute;
+            color: black;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-9 .center-icon {
+            width: 77px;
+            height: 77px;
+            left: 150px;
+            top: 404px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        /* 页面10样式 */
+        .page-10 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-10 .phone {
+            width: 284px;
+            height: 425px;
+            left: 43px;
+            top: 226px;
+            position: absolute;
+            object-fit: contain;
+            opacity: 1;
+            image-rendering: high-quality;
+        }
+        
+        .page-10 .title-main {
+            left: 61px;
+            top: 71px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-10 .title-sub {
+            left: 58px;
+            top: 117px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-10 .ai-features {
+            width: 138px;
+            left: 112px;
+            top: 281px;
+            position: absolute;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 49px;
+            display: inline-flex;
+        }
+        
+        .page-10 .feature-item {
+            align-self: stretch;
+            color: black;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-10 .book {
+            width: 81px;
+            height: 81px;
+            left: 47px;
+            top: 263px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .feature1 {
+            width: 72px;
+            height: 72px;
+            left: 50px;
+            top: 443px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .feature2 {
+            width: 31px;
+            height: 45px;
+            left: 72px;
+            top: 368px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .feature3 {
+            width: 31px;
+            height: 41px;
+            left: 72px;
+            top: 544px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .bar1 {
+            width: 212px; 
+            height: 20px; 
+            top: 325.5px;
+            left:75px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .bar2 {
+            width: 212px; 
+            height: 20px; 
+            top: 423.5px;
+            left:75px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .bar3 {
+            width: 212px; 
+            height: 20px; 
+            top: 504.5px;
+            left:75px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .bar4 {
+            width: 212px; 
+            height: 20px; 
+            top: 594.5px;
+            left:75px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .progress-fill1 {
+            width: 109px;
+            height: 11px;
+            left: 79px;
+            top: 330px;
+            position: absolute;
+            background: #313131;
+        }
+        
+        .page-10 .progress-fill2 {
+            width: 90px;
+            height: 11px;
+            left: 79px;
+            top: 428px;
+            position: absolute;
+            background: #313131;
+        }
+        
+        .page-10 .progress-fill3 {
+            width: 90px;
+            height: 11px;
+            left: 79px;
+            top: 509px;
+            position: absolute;
+            background: #313131;
+        }
+        
+        .page-10 .progress-fill4 {
+            width: 97px;
+            height: 11px;
+            left: 79px;
+            top: 599px;
+            position: absolute;
+            background: #313131;
+        }
+        
+        .page-10 .arrow {
+            width: 70px;
+            height: 70px;
+            left: 290px;
+            top: 270px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .command_bar {
+            width: 332px; 
+            height: 66px; 
+            top: 685px;
+            left:22px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-10 .ai-stats {
+            left: 60px;
+            top: 161px;
+            position: absolute;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-10 .ai-quote {
+            left: 49px;
+            top: 701px;
+            position: absolute;
+            color: black;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        /* 页面11样式 */
+        .page-11 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-11 .gradient-overlay {
+            width: 381px;
+            height: 543px;
+            left: -6px;
+            top: 279px;
+            position: absolute;
+            opacity: 0.71;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, black 100%);
+        }
+
+        .page-11 .bar1 {
+            width: 315px;
+            height: 142px;
+            left: 30px;
+            top: 185px;
+            position: absolute;
+            object-fit: contain;
+        }
+
+        .page-11 .bar2 {
+            width: 315px;
+            height: 142px;
+            left: 30px;
+            top: 345px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-11 .text-your {
+            left: 293px;
+            top: 69px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-11 .text-library {
+            left: 166px;
+            top: 119px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-11 .data-watch {
+            left: 49px;
+            top: 267px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-11 .data-play {
+            left: 49px;
+            top: 425px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-11 .text-favorite {
+            left: 76px;
+            top: 591px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-11 .label-watch {
+            left: 46px;
+            top: 227px;
+            position: absolute;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-11 .label-play {
+            left: 49px;
+            top: 390px;
+            position: absolute;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .page-11 .text-favorite-sub {
+            left: 114px;
+            top: 551px;
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 40px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 1.00);
+        }
+        
+        .page-11 .text-taste {
+            left: 135px;
+            top: 641px;
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 40px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.70);
+        }
+        
+        .page-11 .arrow {
+            width: 70px;
+            height: 70px;
+            left: 290px;
+            top: 260px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-11 .bottom-icon {
+            width: 124px;
+            height: 124px;
+            left: 132px;
+            top: 677px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        /* 页面12样式 */
+        .page-12 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: -0px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-12 .gradient-overlay {
+            width: 381px;
+            height: 543px;
+            left: -3px;
+            top: 309.50px;
+            position: absolute;
+            opacity: 0.25;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, black 100%);
+        }
+        
+        .page-12 .text-year {
+            left: 42px;
+            top: 67px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-no-submit {
+            left: 42px;
+            top: 109px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-perhaps {
+            left: 42px;
+            top: 186px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-define-learning {
+            left: 42px;
+            top: 227px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-exploration {
+            left: 42px;
+            top: 320px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-no-standard-answer {
+            left: 42px;
+            top: 369px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-growth {
+            left: 42px;
+            top: 460px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-outside-homework {
+            left: 42px;
+            top: 510px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 50px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.84);
+        }
+        
+        .page-12 .text-zero {
+            left: 42px;
+            top: 603px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .page-12 .text-blank {
+            left: 42px;
+            top: 653px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        /* 页面13样式 */
+        .page-13 .bg {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-13 .bar {
+            width: 339px;
+            height: 264px;
+            left: 18px;
+            top: 160px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-13 .title {
+            width: 459px;
+            height: 209px;
+            left: -42px;
+            top: 87px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 400;
+        }
+        
+        .page-13 .ai-qa {
+            width: 293px;
+            height: 56px;
+            left: -37px;
+            top: 290px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        .page-13 .ai-count {
+            width: 293px;
+            height: 56px;
+            left: -17px;
+            top: 284px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 32px;
+            font-weight: 400;
+        }
+        
+        .page-13 .discuss-count {
+            width: 293px;
+            height: 35px;
+            left: 127px;
+            top: 281px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 32px;
+            font-weight: 400;
+        }
+        
+        .page-13 .discuss-label {
+            width: 293px;
+            height: 56px;
+            left: 116px;
+            top: 287px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        .page-13 .independent-learning {
+            width: 293px;
+            height: 56px;
+            left: -64px;
+            top: 349px;
+            position: absolute;
+            text-align: center;
+        }
+        
+        .page-13 .independent-percent {
+            width: 293px;
+            height: 56px;
+            left: -80px;
+            top: 388px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
+        .page-13 .social-percent {
+            width: 293px;
+            height: 56px;
+            left: 160px;
+            top: 388px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
+        .page-13 .social-learning {
+            width: 293px;
+            height: 56px;
+            left: 144px;
+            top: 349px;
+            position: absolute;
+            text-align: center;
+        }
+        
+        .page-13 .confirm-text {
+            width: 293px;
+            height: 26px;
+            left: 41px;
+            top: 462px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.70);
+        }
+        
+        .page-13 .confirm-result {
+            width: 293px;
+            height: 42px;
+            left: 52px;
+            top: 488px;
+            position: absolute;
+            text-align: center;
+            color: white;
+        }
+        
+        .page-13 .summary-text {
+            width: 322px;
+            height: 56px;
+            left: 27px;
+            top: 659px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.50);
+        }
+        
+        .page-13 .arrow-icon1 {
+            width: 29px;
+            height: 28px;
+            left: 210px;
+            top: 759px;
+            position: absolute;
+            transform: rotate(180deg);
+            transform-origin: top left;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        
+        .page-13 .arrow-icon1:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+        
+        .page-13 .arrow-icon1:active {
+            transform: rotate(180deg) scale(0.95);
+        }
+        
+        .page-13 .ai-icon2 {
+            width: 45px;
+            height: 45px;
+            left: 60px;
+            top: 240px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-13 .chat-icon3 {
+            width: 90px;
+            height: 90px;
+            left: 185px;
+            top: 220px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-13 .progress-container {
+            width: 255px;
+            height: 3px;
+            left: 59px;
+            position: absolute;
+            background: black;
+        }
+        
+        .page-13 .progress-container-top {
+            top: 371px;
+        }
+        
+        .page-13 .progress-container-bottom {
+            top: 387px;
+        }
+        
+        .page-13 .progress-end {
+            width: 3px;
+            height: 13px;
+            left: 56px;
+            top: 374px;
+            position: absolute;
+            background: black;
+        }
+        
+        .page-13 .progress-end-right {
+            left: 314px;
+        }
+        
+        .page-13 .progress-fill-independent {
+            width: 110.02px;
+            height: 11px;
+            left: 60px;
+            top: 375px;
+            position: absolute;
+            background: #46A5FF;
+        }
+        
+        .page-13 .progress-fill-social {
+            width: 142px;
+            height: 11px;
+            left: 171px;
+            top: 375px;
+            position: absolute;
+            background: #FFC985;
+        }
+        
+        /* 页面14样式 */
+        .page-14 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-14 .title {
+            width: 459px;
+            height: 209px;
+            left: -42px;
+            top: 63px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 1.00);
+        }
+        
+        .page-14 .footer-text {
+            width: 293px;
+            height: 56px;
+            left: 41px;
+            top: 659px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .page-14 .keyword {
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+        
+        .page-14 .keyword-explore {
+            width: 130px;
+            height: 47px;
+            left: 135px;
+            top: 248px;
+            font-size: 48px;
+            text-shadow: 0px 6px 4px rgba(0, 116, 179, 1.00);
+        }
+        
+        .page-14 .keyword-curious {
+            width: 217px;
+            height: 96px;
+            left: 0px;
+            top: 310px;
+            font-size: 75px;
+            text-shadow: 5px 5px 4px rgba(0, 96, 143, 1.00);
+        }
+        
+        .page-14 .keyword-persist {
+            width: 130px;
+            height: 47px;
+            left: 201px;
+            top: 354px;
+            font-size: 40px;
+            text-shadow: -4px 4px 4px rgba(0, 157, 234, 1.00);
+        }
+        
+        .page-14 .keyword-focus {
+            width: 130px;
+            height: 47px;
+            left: 226px;
+            top: 434px;
+            font-size: 55px;
+            text-shadow: -4px -4px 4px rgba(0, 135, 204, 1.00);
+        }
+        
+        .page-14 .keyword-think {
+            width: 130px;
+            height: 47px;
+            left: 87px;
+            top: 406px;
+            font-size: 48px;
+            text-shadow: 3px -4px 4px rgba(0, 157, 234, 1.00);
+        }
+        
+        .page-14 .keyword-interact {
+            width: 130px;
+            height: 47px;
+            left: 112px;
+            top: 486px;
+            font-size: 36px;
+            text-shadow: 0px -4px 4px rgba(0, 157, 234, 1.00);
+        }
+        
+        .page-14 .arrow-icon {
+            width: 29px;
+            height: 28px;
+            left: 210px;
+            top: 759px;
+            position: absolute;
+            transform: rotate(180deg);
+            transform-origin: top left;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .page-14 .arrow-icon:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+        
+        .page-14 .arrow-icon:active {
+            transform: rotate(180deg) scale(0.95);
+        }
+        
+        /* 页面15样式 */
+        .page-15 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-15 .text-processing {
+            width: 459px;
+            height: 209px;
+            left: -42px;
+            top: 156px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
+        }
+        
+        .page-15 .text-personality {
+            width: 459px;
+            height: 54px;
+            left: -42px;
+            top: 240px;
+            position: absolute;
+            text-align: center;
+            color: #125546;
+            font-size: 48px;
+            font-weight: 400;
+            -webkit-text-stroke: 1px rgb(255, 255, 255);
+        }
+        
+        .page-15 .text-loading {
+            width: 459px;
+            height: 54px;
+            left: -42px;
+            top: 344px;
+            position: absolute;
+            text-align: center;
+            color: #7EA600;
+            font-size: 48px;
+            font-weight: 400;
+            text-shadow: 3px 3px 0px white;
+        }
+        
+        .page-15 .text-ready {
+            width: 293px;
+            height: 56px;
+            left: 46px;
+            top: 536px;
+            position: absolute;
+            text-align: center;
+            color: #115043;
+            font-size: 24px;
+            font-weight: 400;
+        }
+        
+        .page-15 .progress-bar-container {
+            width: 375px;
+            height: 111px;
+            left: 0px;
+            top: 402px;
+            position: absolute;
+            z-index: 100;
+        }
+        
+        .page-15 .progress-bar-line {
+            width: 179px;
+            height: 24px;
+            left: 70px;
+            top: 425px;
+            position: absolute;
+        }
+        
+        
+        /* 动画效果 */
+        @keyframes loading {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .text-loading {
+            animation: loading 1.5s infinite;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 400px) {
+            .report-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+     
+        

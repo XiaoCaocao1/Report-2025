@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年度学习报告 - 第5页</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        /* 页面容器 */
+        .page-container {
+            width: 375px;
+            height: 812px;
+            position: relative;
+            background: white;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* 背景装饰 */
+        .bg-decoration {
+            width: 472px;
+            height: 860px;
+            left: -47px;
+            top: 0;
+            position: absolute;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+        
+        /* 标题区域 */
+        .title-area {
+            width: 330px;
+            height: 88px;
+            left: 24px;
+            top: 33px;
+            position: absolute;
+            background: #FFEAC1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* 主标题 */
+        .main-title {
+            text-align: center;
+            color: #451416;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        /* 金色装饰条 */
+        .gold-bar {
+            width: 188px;
+            height: 53px;
+            left: 93px;
+            top: 218px;
+            position: absolute;
+            background: #EFBE86;
+            border-radius: 8px;
+        }
+        
+        /* 学院卡片容器 */
+        .college-container {
+            width: 289px;
+            left: 43px;
+            top: 241px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* 学院卡片通用样式 */
+        .college-card {
+            width: 100%;
+            height: 110px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        /* 电力学院卡片 - 浅橙色 */
+        .power-college {
+            background: #FFF3DB; /* 浅橙色背景 */
+        }
+        
+        /* 数学学院卡片 - 浅蓝色 */
+        .math-college {
+            background: #DBF1FF; /* 浅蓝色背景 */
+        }
+        
+        /* 数学学院2卡片 - 浅紫色 */
+        .math2-college {
+            background: #E0DBFF; /* 浅紫色背景 */
+        }
+        
+        /* 学院标题区域 */
+        .college-header {
+            left: 13px;
+            top: 13px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* 学院图标 */
+        .college-icon {
+            width: 24px;
+            height: 32px;
+        }
+        
+        /* 学院名称 */
+        .college-name {
+            color: #4B1715;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .power-college .college-name {
+            color: #E2B90E; /* 电力学院-金色文字 */
+        }
+        
+        .math-college .college-name {
+            color: #1489FF; /* 数学学院1-蓝色文字 */
+        }
+        
+        .math2-college .college-name {
+            color: #8328A1; /* 数学学院2-紫色文字 */
+        }
+        
+        /* 统计数据区域 */
+        .stats-area {
+            left: 13px;
+            top: 49px;
+            position: absolute;
+            display: flex;
+            gap: 12px;
+        }
+        
+        /* 统计卡片 */
+        .stat-card {
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 70px;
+            text-align: center;
+        }
+        
+        /* 统计数字 */
+        .stat-number {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        /* 统计类型 */
+        .stat-type {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        /* 下一页按钮 */
+        .next-button {
+            width: 189px;
+            height: 34px;
+            left: 93px;
+            top: 698px;
+            position: absolute;
+            text-align: center;
+            color: #451416;
+            font-size: 48px;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .next-button:hover {
+            transform: translateX(5px);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 400px) {
+            .page-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container" id="page-5">
+        <!-- 背景装饰 -->
+        <img class="bg-decoration" src="assets/page5/bg1.png" alt="背景装饰">
+        
+        <!-- 金色装饰条 -->
+        <div class="gold-bar"></div>
+        
+        <!-- 标题区域 -->
+        <div class="title-area">
+            <div class="main-title">2025年度活跃学院榜</div>
+        </div>
+        
+        <!-- 学院排行榜 -->
+        <div class="college-container">
+            <!-- 第1名: 电力学院 -->
+            <div class="college-card power-college">
+                <div class="college-header">
+                    <img class="college-icon" src="assets/icon/1st.png" alt="电力学院图标">
+                    <div class="college-name">电力学院</div>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-card">
+                        <div class="stat-number">66,449</div>
+                        <div class="stat-type">作业</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">20,903</div>
+                        <div class="stat-type">测试</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2,214</div>
+                        <div class="stat-type">AI咨询</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第2名: 数学学院1 -->
+            <div class="college-card math-college">
+                <div class="college-header">
+                    <img class="college-icon" src="assets/icon/2nd.png" alt="数学学院图标">
+                    <div class="college-name">数学学院</div>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-card">
+                        <div class="stat-number">79,679</div>
+                        <div class="stat-type">作业</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2,962</div>
+                        <div class="stat-type">测试</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">843</div>
+                        <div class="stat-type">AI咨询</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第3名: 数学学院2 -->
+            <div class="college-card math2-college">
+                <div class="college-header">
+                    <img class="college-icon" src="assets/icon/3rd.png" alt="数学学院图标">
+                    <div class="college-name">数学学院</div>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-card">
+                        <div class="stat-number">83,574</div>
+                        <div class="stat-type">作业</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">13,657</div>
+                        <div class="stat-type">测试</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2,224</div>
+                        <div class="stat-type">AI咨询</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 下一页按钮 -->
+        <div class="next-button" onclick="nextPage()">>>></div>
+    </div>
+    
+    <script>
+        function nextPage() {
+            alert('🏆 查看下一个排行榜...');
+        }
+        
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            const page = document.getElementById('page-5');
+            page.style.opacity = '0';
+            page.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                page.style.transition = 'all 0.8s ease-out';
+                page.style.opacity = '1';
+                page.style.transform = 'scale(1)';
+            }, 300);
+            
+            // 排行榜卡片动画
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.college-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        card.style.transition = 'all 0.6s ease-out';
+                        
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, index * 300);
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

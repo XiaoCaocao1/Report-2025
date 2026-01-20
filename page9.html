@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度学习报告 - 第9页</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        /* 页面容器 */
+        .page-container {
+            width: 375px;
+            height: 812px;
+            position: relative;
+            background: white;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* 背景图片 */
+        .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        /* 背景遮罩 */
+        .bg-overlay {
+            width: 827px;
+            height: 827px;
+            left: -229px;
+            top: -8px;
+            position: absolute;
+            background: rgba(59, 51, 86, 0.16);
+        }
+        
+        /* 数据展示 */
+        .data-homework {
+            left: 123px;
+            top: 132px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .label-homework {
+            left: 148px;
+            top: 190px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .data-tests {
+            left: 123px;
+            top: 493px;
+            position: absolute;
+            text-align: center;
+            color: #0D0D0D;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        .label-tests {
+            left: 148px;
+            top: 553px;
+            position: absolute;
+            text-align: center;
+            color: #0D0D0D;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        
+        /* 光晕效果 */
+        .glow-effect {
+            width: 360px;
+            height: 137px;
+            left: 15px;
+            top: 287px;
+            position: absolute;
+            opacity: 0.52;
+            background: radial-gradient(ellipse 50% 50% at 50% 50%, white 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        /* 文本内容 */
+        .text-line1 {
+            left: 85px;
+            top: 316px;
+            position: absolute;
+            color: black;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .text-line2 {
+            left: 73px;
+            top: 366px;
+            position: absolute;
+            color: black;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        /* 图标 */
+        .center-icon {
+            width: 77px;
+            height: 77px;
+            left: 150px;
+            top: 404px;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        /* 字体定义 */
+        .font-bold {
+            font-family: "Impact", "Arial Black", sans-serif;
+        }
+        
+        .font-regular {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 400px) {
+            .page-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 背景图片 -->
+        <img class="bg-image" src="assets/page9/bg.png" alt="背景图片">
+        
+        <!-- 背景遮罩 -->
+        <div class="bg-overlay"></div>
+        
+        <!-- 作业数据 -->
+        <div class="data-homework font-bold">245次</div>
+        <div class="label-homework font-bold">作业</div>
+        
+        <!-- 测试数据 -->
+        <div class="data-tests font-bold">203场</div>
+        <div class="label-tests font-bold">测试</div>
+        
+        <!-- 光晕效果 -->
+        <div class="glow-effect"></div>
+        
+        <!-- 文本内容 -->
+        <div class="text-line1 font-regular">你用答案写就的篇章</div>
+        <div class="text-line2 font-regular">比任何语言都掷地有声</div>
+        
+        <!-- 中心图标 -->
+        <img class="center-icon" src="assets/page9/pen.png" alt="钢笔">
+    </div>
+</body>
+</html>

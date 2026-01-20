@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度学习报告 - 第7页</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        /* 页面容器 */
+        .page-container {
+            width: 375px;
+            height: 812px;
+            position: relative;
+            background: white;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* 背景图片 */
+        .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: -0px;
+            position: absolute;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* 书本图片 */
+        .book-image {
+            width: 366.48px;
+            height: 503.92px;
+            left: 9px;
+            top: 115px;
+            position: absolute;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* 分割线图片 */
+        .Arrow-image {
+            width: 208px;
+            height: 2px;
+            left: 80px;
+            top: 360px;
+            position: absolute;
+            object-fit: cover;
+            z-index:100;
+        }
+        
+        /* 文本样式 */
+        .text-time-spent {
+            left: 102px;
+            top: 193px;
+            position: absolute;
+            text-align: center;
+            color: #7C4D37;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        
+        .text-login-count {
+            left: 148px;
+            top: 394px;
+            position: absolute;
+            text-align: center;
+            color: #7C4D37;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        
+        .text-movie-comparison {
+            left: 81px;
+            top: 653px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .text-learning-choice {
+            left: 108px;
+            top: 695px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* 数据展示 */
+        .data-hours {
+            left: 110px;
+            top: 239px;
+            position: absolute;
+            text-align: center;
+            color: #451416;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .data-logins {
+            left: 145px;
+            top: 444px;
+            position: absolute;
+            text-align: center;
+            color: #451416;
+            font-size: 34px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .data-daily {
+            width: 104px;
+            height: 43px;
+            left: 135px;
+            top: 297px;
+            position: absolute;
+            opacity: 0.77;
+            text-align: center;
+            color: #451416;
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        
+        /* 顶部图标 */
+        .top-icon {
+            width: 139px;
+            height: 139px;
+            left: 122px;
+            top: 0px;
+            position: absolute;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 400px) {
+            .page-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 背景图片 -->
+        <img class="bg-image" src="assets/page7/bg.png" alt="背景图片">
+        
+        <!-- 书本图片 -->
+        <img class="book-image" src="assets/page7/book.png" alt="书本图片">
+        
+        <!-- 分割线 -->
+        <img class="Arrow-image" src="assets/page7/Arrow.png" alt="分割线">
+        
+        
+        <!-- 文本内容 -->
+        <div class="text-time-spent">你在课程中心度过了</div>
+        <div class="text-login-count">累计登录</div>
+        <div class="text-movie-comparison">相当于看了206部电影</div>
+        <div class="text-learning-choice">但你选择了学习</div>
+        
+        <!-- 数据展示 -->
+        <div class="data-hours">417小时</div>
+        <div class="data-logins">287次</div>
+        <div class="data-daily">5分钟</div>
+        
+        <!-- 顶部图标 -->
+        <img class="top-icon" src="assets/page7/icon.png" alt="学习图标">
+    </div>
+</body>
+</html>

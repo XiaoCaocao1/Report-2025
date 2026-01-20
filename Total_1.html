@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度学习报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 定义字体 */
+        @font-face 
+        {
+            font-family: '汉仪像素 11px U';  
+            src: url('HYPixel11pxU-2.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face 
+        {
+            font-family: 'Aa苹苹果果像素体';  
+            src: url('ziti.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+            font-family: "Aa苹苹果果像素体","汉仪像素 11px U";
+            overflow: hidden;
+        }
+
+        body,* {
+            font-family:"Aa苹苹果果像素体","汉仪像素 11px U";
+        }
+        
+        /* 主容器 */
+        .report-container {
+            width: 375px;
+            height: 812px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        /* 页面容器 */
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .page.prev {
+            transform: translateX(100%);
+        }
+        
+        /* 导航按钮 */
+        .nav-button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 24px;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .prev-button {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .next-button {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        /* 页面指示器 */
+        .page-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+        }
+        
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .indicator-dot.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.2);
+        }
+        
+        /* 页面1样式 */
+        .page-1 
+        {
+            background-color: #ffffff;
+        }
+        
+        .page-1 .background {
+            top: 0;
+            left: -84px;
+            width: 542px;
+            height: 812px;
+            aspect-ratio: 0.67;
+            position: absolute;
+            object-fit: contain;
+        }
+        
+        .page-1 .text-wrapper {
+            position: absolute;
+            top: 200px;
+            left: 33px;
+            width: 144px;
+            text-shadow: 0px 4px 4px #00000080;
+            font-weight: 400;
+            color: #feffed;
+            font-size: 64px;
+            letter-spacing: 0;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        .page-1 .div {
+            top: 276px;
+            text-shadow: 0px 4px 4px #00000080;
+            color: #ffffff;
+            font-size: 48px;
+            position: absolute;
+            left: 33px;
+            width: 308px;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+        
+        .page-1 .text-wrapper-2 {
+            top: 341px;
+            text-shadow: 0px 4px 4px #00000040;
+            color: #fdffda;
+            font-size: 24px;
+            position: absolute;
+            left: 33px;
+            width: 308px;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: normal;
+        }
+        
+        .page-1 .img {
+            top: 194px;
+            left: 166px;
+            width: 88px;
+            height: 88px;
+            aspect-ratio: 1;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        .page-1 .frame {
+            position: absolute;
+            top: 646px;
+            left: 77px;
+            width: 220px;
+            height: 72px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .page-1 .frame:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        /* 页面2样式 */
+        .page-2 {
+            background: white;
+        }
+        
+        .page-2 .image-1 {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+	        z-index: 1;
+            object-fit: contain;
+            aspect-ratio: 0.67
+        }
+        
+        .page-2 .image-2 {
+            width: 347.15px;
+            height: 477.34px;
+            left: 14px;
+            top: 112px;
+            position: absolute;
+	        z-index: 2;
+        }
+        
+        .page-2 .gradient-1 {
+            width: 232px;
+            height: 332px;
+            left: 72px;
+            top: 179px;
+            position: absolute;
+            background: linear-gradient(180deg, #D3A873 0%, #DDB881 45%, #DCB681 90%, #CB9D6A 100%);
+        }
+        
+        .page-2 .gradient-2 {
+            width: 231.82px;
+            height: 331.93px;
+            left: 71.79px;
+            top: 178.68px;
+            position: absolute;
+            background: radial-gradient(ellipse 50.00% 50.00% at 50.00% 50.00%, rgba(153, 135.80, 111.81, 0) 0%, rgba(255, 226.33, 186.35, 0) 90%);
+        }
+        
+        .page-2 .glow {
+            width: 212px;
+            height: 256px;
+            left: 82px;
+            top: 210px;
+            position: absolute;
+            background: radial-gradient(ellipse 50.00% 50.00% at 50.00% 50.00%, #FFF8DA 0%, rgba(237.50, 215.32, 173.11, 0.60) 73%, rgba(220, 183, 128, 0.20) 100%);
+            border-radius: 9999px;
+        }
+
+        .page2-bottom-arrows {
+            position: absolute;
+            bottom: 60px; /* 调整位置，高于页面指示器 */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .page2-bottom-arrows .arrow-button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: none;
+            box-shadow: none;
+            min-width: auto;
+            text-align: center;
+            letter-spacing: 4px;
+            opacity:0.7;
+        }
+
+        .page2-bottom-arrows .arrow-button:hover {
+            background: transparent !important;
+            border-color: transparent !important;
+            transform: translateY(-3px); 
+            opacity: 1; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+        }
+
+        .page-2 .page-indicator {
+            bottom: 40px;
+        }
+        
+        /* 页面3样式 */
+        .page-3 {
+            background: white;
+        }
+        
+        .page-3 .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: contain;
+            aspect-ratio: 0.67
+        }
+        
+        .page-3 .bottom-text {
+            left: 50%;
+            top: 615px;
+            position: absolute;
+	        transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        
+        .page-3 .title-text {
+            width: 308px;
+            height: 116px;
+            left: 34px;
+            top: 52px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-3 .stats-container {
+            width: 344px;
+            left: 18px;
+            top: 194px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .page-3 .stats-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .page-3 .stat-card {
+            width: 162px;
+            height: 120px;
+            background: #FFEAC1;
+            border-radius: 10px;
+            position: relative;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .page-3 .stat-title {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .page-3 .stat-value {
+            color: #4B1715;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .page-3 .stat-icon {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .page-3 .stat-icon img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .page-3 .double-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .page-3 .double-icons img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .page3-bottom-arrows {
+            position: absolute;
+            bottom: 50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .page3-bottom-arrows .arrow-button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: none;
+            box-shadow: none;
+            min-width: auto;
+            text-align: center;
+            letter-spacing: 4px;
+            opacity:0.7;
+        }
+
+        .page3-bottom-arrows .arrow-button:hover {
+            background: transparent;
+            border-color: transparent ;
+            transform: translateY(-3px); 
+            opacity: 1; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+        }
+
+        .page-3 .page-indicator {
+            bottom: 20px;
+        }
+        
+        /* 页面4样式 */
+        .page-4 {
+            background: #1A3732;
+        }
+        
+        .page-4 .bg {
+            width: 350px;
+            height: 760px;
+            left: 0px;
+            top: 60px;
+            position: absolute;
+            object-fit: contain;
+            image-rendering: crisp-edges;  /* 添加图片渲染优化 */
+            z-index: 2;
+        }
+
+        .page-4 .blackboard {
+            width: 375px;
+            height: 350px;
+            left: 0px;
+            top: 461px;
+            position: absolute;
+            object-fit: cover;
+            opacity: 0.9;
+            z-index: 1;
+        }
+        
+        .page-4 .main-title {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 354px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .page-4 .sub-title {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .page-4 .pie-chart {
+            width: 250px;
+            height: 250px;
+            left: 65px;
+            top: 200px;
+            position: absolute;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #F4C078 0deg 176.724deg,
+                #EEFFAE 176.724deg 306.864deg,
+                #D9FFC9 306.864deg 342.216deg,
+                #65DEEC 342.216deg 350.856deg,
+                #F3ACAD 350.856deg 356.616deg,
+                #88E2CD 356.616deg 358.488deg,
+                #F59B51 358.488deg 360deg
+            );
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .page-4 .pie-center {
+            width: 70px;
+            height: 70px;
+            background: #1A3732;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .page-4 .data-label {
+            position: absolute;
+            line-height: 1.3;
+            z-index: 10;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .page-4 .label-dark {
+            color: #451416;
+            font-weight: 600;
+        }
+        
+        .page-4 .label-light {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .page-4 .label-test { 
+            left: 20px;
+            top: 220px;
+        }
+        
+        .page-4 .label-ai { 
+            left: 150px;
+            top: 130px;
+        }
+        
+        .page-4 .label-sign { 
+            left: 230px;
+            top: 300px;
+        }
+        
+        .page-4 .label-homework { 
+            left: 100px;
+            top: 330px;
+        }
+        
+        .page-4 .label-message { 
+            left: 305px;
+            top: 180px;
+        }
+        
+        .page-4 .label-vote { 
+            left: 310px;
+            top: 420px;
+        }
+        
+        .page-4 .label-discuss { 
+            left: 20px;
+            top: 430px;
+        }
+        
+        .page-4 .data-type {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .page-4 .data-count {
+            font-size: 12px;
+            margin: 2px 0;
+        }
+        
+        .page-4 .data-percent {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .page-4 .divider-line {
+            position: absolute;
+            left: 20px;
+            top: 500px;
+            width: 335px;
+            height: 1px;
+            border-top: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+        
+        .page-4 .bottom-text-arrow-group {
+            position: absolute;
+            right: 20px;  
+            bottom: 120px;  
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;  
+            gap: 10px;  
+            z-index: 100;
+        }
+        .page-4 .bottom-right-text {
+            width: 188px;
+            text-align: right;
+            color: white;
+            font-size: 18px;
+            line-height: 1.4;
+            opacity: 0.9;
+            margin: 0;  
+            position: static;  
+        }
+
+        .page-4 .page4-bottom-arrows {
+            display: flex;
+            justify-content: flex-end;  
+            width: 100%;
+        }
+
+        .page-4 .page4-bottom-arrows .arrow-button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: none;
+            box-shadow: none;
+            min-width: auto;
+            text-align: center;
+            letter-spacing: 4px;
+            opacity: 0.7;
+        }
+
+        .page-4 .page4-bottom-arrows .arrow-button:hover {
+            background: transparent ;
+            border-color: transparent ;
+            transform: translateY(-3px);
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 页面5样式 */
+        .page-5 {
+            background: white;
+        }
+        
+        .page-5 .bg-decoration {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0;
+            position: absolute;
+            object-fit: contain;
+            opacity: 1;
+        }
+        
+        .page-5 .gold-bar {
+            width: 188px;
+            height: 53px;
+            left: 93px;
+            top: 218px;
+            position: absolute;
+            background: #EFBE86;
+            border-radius: 8px;
+        }
+        
+        .page-5 .title-area {
+            width: 330px;
+            height: 88px;
+            left: 24px;
+            top: 33px;
+            position: absolute;
+            background: #FFEAC1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .page-5 .main-title {
+            text-align: center;
+            color: #451416;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .page-5 .college-container {
+            width: 289px;
+            left: 43px;
+            top: 241px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .page-5 .college-card {
+            width: 100%;
+            height: 110px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .page-5 .power-college {
+            background: #FFF3DB;
+        }
+        
+        .page-5 .math-college {
+            background: #DBF1FF;
+        }
+        
+        .page-5 .math2-college {
+            background: #E0DBFF;
+        }
+        
+        .page-5 .college-header {
+            left: 13px;
+            top: 13px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-5 .college-icon {
+            width: 24px;
+            height: 32px;
+        }
+        
+        .page-5 .college-name {
+            color: #4B1715;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .page-5 .power-college .college-name {
+            color: #E2B90E;
+        }
+        
+        .page-5 .math-college .college-name {
+            color: #1489FF;
+        }
+        
+        .page-5 .math2-college .college-name {
+            color: #8328A1;
+        }
+        
+        .page-5 .stats-area {
+            left: 13px;
+            top: 49px;
+            position: absolute;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .page-5 .stat-card {
+            padding: 8px ;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 80px;
+            text-align: center;
+        }
+        
+        .page-5 .stat-number {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .page-5 .stat-type {
+            color: #4B1715;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        /* 页面6样式 */
+        .page-6 {
+            background: #1a1a1a;
+        }
+        
+        .page-6 .stars-bg {
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: fill;
+            opacity: 0.95;
+        }
+        
+        .page-6 .center-text {
+            width: 286px;
+            height: 155px;
+            left: 50%;
+            top: 290px;
+            position: absolute;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .page-6 .main-title {
+            font-size: 48px;
+            font-weight: 600;
+            font-family:"汉仪像素 11px U";
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .page-6 .next-arrow {
+            width: 0px;
+            height: 164px;
+            left: 277px;
+            top: 628px;
+            position: absolute;
+            transform: rotate(90deg);
+            transform-origin: top left;
+            text-align: center;
+            color: white;
+            font-size: 64px;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+        
+        .page-6 .next-arrow:hover {
+            opacity: 1;
+            transform: rotate(90deg) translateX(5px);
+        }
+         
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .page-6 .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+            animation: shoot 8s infinite ease-in-out;
+        }
+        
+        @keyframes shoot {
+            0% { transform: translateX(-100px) translateY(0) rotate(-30deg); opacity: 0; }
+            10% { opacity: 1; }
+            20% { transform: translateX(300px) translateY(100px) rotate(-30deg); opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 400px) {
+            .report-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="report-container">
+        <!-- 页面1 -->
+        <div class="page page-1 active">
+            <img class="background" src="assets/page1/image-16.png" />
+      		<div class="text-wrapper">2025</div>
+      		<div class="div">年度学习报告</div>
+      		<div class="text-wrapper-2">解锁你的专属学习人格</div>
+      		<img class="img" src="assets/page1/image-18.png" />
+      		<img class="frame" src="assets/page1/frame-4.svg" />
+        </div>
+        
+        <!-- 页面2 -->
+
+	    <div class="page page-2">
+    		<img class="image-1" src="assets/page2/bg.png" alt="背景">
+    		<img class="image-2" src="assets/page2/book.png" alt="书籍">
+
+    		<div class="gradient-1"></div>
+    		<div class="gradient-2"></div>
+    		<div class="glow"></div>
+
+ 		<div class="page2-bottom-arrows" id="page2-arrows">
+        		<div class="arrow-button" onclick="nextPage()">>>></div>
+    	</div>
+
+        </div>
+        
+        <!-- 页面3 -->
+    <div class="page page-3">
+             <!-- 背景图片 -->
+        <img class="bg-image" src="assets/page3/bg.png" alt="背景">
+        
+        <!-- 标题 -->
+        <div class="title-text">
+            2025<br>课程中心
+        </div>
+        
+        <!-- 底部文字 -->
+        <div class="bottom-text">
+            每个数字<br>都闪烁着好奇与探索的光芒
+        </div>
+        
+        <!-- 数据统计 -->
+        <div class="stats-container">
+            <!-- 第1行 -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="assets/icon/eye.png" alt="访问量图标">
+                    </div>
+                    <div class="stat-title">总访问量</div>
+                    <div class="stat-value">4,364,900</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="assets/icon/homework.png" alt="作业图标">
+                    </div>
+                    <div class="stat-title">作业总量</div>
+                    <div class="stat-value">554,426</div>
+                </div>
+            </div>
+            
+            <!-- 第2行 -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="assets/icon/paper.png" alt="试卷图标">
+                    </div>
+                    <div class="stat-title">试卷总数</div>
+                    <div class="stat-value">748,382</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <img src="assets/icon/ai.png" alt="AI图标">
+                    </div>
+                    <div class="stat-title">AI咨询总数</div>
+                    <div class="stat-value">36,288</div>
+                </div>
+            </div>
+            
+            <!-- 第3行 - 修改为双图标 -->
+            <div class="stats-row">
+                <!-- 教师卡片 - 双图标 -->
+                <div class="stat-card">
+                    <div class="double-icons">
+                        <img src="assets/icon/teacher-1.png" alt="教师图标">
+                        <img src="assets/icon/teacher-2.png" alt="教师图标">
+                    </div>
+                    <div class="stat-title">活跃教师</div>
+                    <div class="stat-value">688</div>
+                </div>
+                
+                <!-- 学生卡片 - 双图标 -->
+                <div class="stat-card">
+                    <div class="double-icons">
+                        <img src="assets/icon/student-1.png" alt="学生图标">
+                        <img src="assets/icon/student-2.png" alt="学生图标">
+                    </div>
+                    <div class="stat-title">活跃学生</div>
+                    <div class="stat-value">18,887</div>
+                </div>
+            </div>
+        </div>
+	    
+        <div class="page3-bottom-arrows" id="page3-arrows">
+        	<div class="arrow-button" onclick="nextPage()">>>></div>
+    	</div>
+    </div>
+                
+        <!-- 页面4 -->
+    <div class="page page-4">
+  
+        <img class="blackboard" src="assets/page4/bg-2.png" >
+        <img class="bg" src="assets/page4/bg-1.png" >
+
+        <!-- 标题 -->
+        <div class="main-title">互动分布大揭晓</div>
+        <div class="sub-title">看看大家都在干啥</div>
+        
+        <!-- 真正的饼图 -->
+        <div class="pie-chart">
+            <div class="pie-center"></div>
+        </div>
+        
+        <!-- 数据标签 - 准确匹配图片数据 -->
+        <div class="data-label label-light label-test">
+            <div class="data-type">测试</div>
+            <div class="data-count">148.382次</div>
+            <div class="data-percent">9.81%</div>
+        </div>
+        
+        <div class="data-label label-light label-ai">
+            <div class="data-type">AI咨询</div>
+            <div class="data-count">36.288次</div>
+            <div class="data-percent">2.40%</div>
+        </div>
+        
+        <div class="data-label label-dark label-sign">
+            <div class="data-type">签到</div>
+            <div class="data-count">742.867次</div>
+            <div class="data-percent">49.09%</div>
+        </div>
+        
+        <div class="data-label label-dark label-homework">
+            <div class="data-type">作业</div>
+            <div class="data-count">554.426次</div>
+            <div class="data-percent">36.64%</div>
+        </div>
+        
+        <div class="data-label label-light label-message">
+            <div class="data-type">消息</div>
+            <div class="data-count">20.687次</div>
+            <div class="data-percent">1.37%</div>
+        </div>
+        
+        <div class="data-label label-light label-vote">
+            <div class="data-type">投票</div>
+            <div class="data-count">7.882次</div>
+            <div class="data-percent">0.52%</div>
+        </div>
+        
+        <div class="data-label label-light label-discuss">
+            <div class="data-type">讨论</div>
+            <div class="data-count">2,661次</div>
+            <div class="data-percent">0.17%</div>
+        </div>
+        
+        <!-- 分隔线 -->
+        <div class="divider-line"></div>
+        
+        <div class="bottom-text-arrow-group">
+            <div class="bottom-right-text">
+                每次互动<br>都照亮<br>彼此前行的路
+            </div>
+
+            <div class="page4-bottom-arrows" >
+        	    <div class="arrow-button" onclick="nextPage()">>>></div>
+    	    </div>
+        </div>
+    </div>
+        
+        <!-- 页面5 -->
+    <div class="page page-5">
+        <img class="bg-decoration" src="assets/page5/bg.png" alt="背景装饰">
+        
+        <!-- 金色装饰条 -->
+        <div class="gold-bar"></div>
+        
+        <!-- 标题区域 -->
+        <div class="title-area">
+            <div class="main-title">2025年度活跃学院榜</div>
+        </div>
+        
+        <!-- 学院排行榜 -->
+        <div class="college-container">
+            <!-- 第1名: 电力学院 -->
+            <div class="college-card power-college">
+                <div class="college-header">
+                    <img class="college-icon" src="assets/icon/1st.png" alt="电力学院图标">
+                    <div class="college-name">电力学院</div>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-card">
+                        <div class="stat-number">66,449</div>
+                        <div class="stat-type">作业</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">20,903</div>
+                        <div class="stat-type">测试</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2,214</div>
+                        <div class="stat-type">AI咨询</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第2名: 数学学院1 -->
+            <div class="college-card math-college">
+                <div class="college-header">
+                    <img class="college-icon" src="assets/icon/2nd.png" alt="数学学院图标">
+                    <div class="college-name">数学学院</div>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-card">
+                        <div class="stat-number">79,679</div>
+                        <div class="stat-type">作业</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2,962</div>
+                        <div class="stat-type">测试</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">843</div>
+                        <div class="stat-type">AI咨询</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第3名: 数学学院2 -->
+            <div class="college-card math2-college">
+                <div class="college-header">
+                    <img class="college-icon" src="assets/icon/3rd.png" alt="数学学院图标">
+                    <div class="college-name">数学学院</div>
+                </div>
+                
+                <div class="stats-area">
+                    <div class="stat-card">
+                        <div class="stat-number">83,574</div>
+                        <div class="stat-type">作业</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">13,657</div>
+                        <div class="stat-type">测试</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2,224</div>
+                        <div class="stat-type">AI咨询</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+        
+        <!-- 页面6 -->
+    <div class="page page-6">
+        <img class="stars-bg" src="assets/page6/bg.png" alt="星空背景">
+            
+        <div class="center-text">
+            <div class="main-title">看看你的</div>
+            <div class="main-title">个人轨迹吧~</div>
+        </div>
+            
+        <div class="next-arrow">>></div>
+            
+	</div>
+        
+        <!-- 导航按钮 -->
+        <div class="nav-button prev-button">‹</div>
+        <div class="nav-button next-button">›</div>
+        
+        <!-- 页面指示器 -->
+        <div class="page-indicator">
+            <div class="indicator-dot active"></div>
+            <div class="indicator-dot"></div>
+            <div class="indicator-dot"></div>
+            <div class="indicator-dot"></div>
+            <div class="indicator-dot"></div>
+            <div class="indicator-dot"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 页面管理
+        const pages = document.querySelectorAll('.page');
+        const dots = document.querySelectorAll('.indicator-dot');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        let currentPage = 0;
+        
+        // 初始化页面
+        function initPages() {
+            pages.forEach((page, index) => {
+                if (index === 0) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active', 'prev');
+                }
+            });
+            
+            updateDots();
+            updateButtons();
+        }
+        
+        // 更新指示器
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index === currentPage) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // 更新按钮状态
+        function updateButtons() {
+            if (currentPage === 0) {
+                prevButton.style.display = 'none';
+            } else {
+                prevButton.style.display = 'flex';
+            }
+            
+            if (currentPage === pages.length - 1) {
+                nextButton.style.display = 'none';
+            } else {
+                nextButton.style.display = 'flex';
+            }
+        }
+        
+        // 切换到指定页面
+        function goToPage(index) {
+            if (index < 0 || index >= pages.length) return;
+            
+            // 更新当前页面状态
+            pages[currentPage].classList.remove('active');
+            if (index < currentPage) {
+                pages[currentPage].classList.add('prev');
+            }
+            
+            // 更新目标页面状态
+            pages[index].classList.add('active');
+            pages[index].classList.remove('prev');
+            
+            currentPage = index;
+            updateDots();
+            updateButtons();
+        }
+        
+        // 下一页
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                goToPage(currentPage + 1);
+            }
+        }
+        
+        // 上一页
+        function prevPage() {
+            if (currentPage > 0) {
+                goToPage(currentPage - 1);
+            }
+        }
+        
+        // 事件监听
+        prevButton.addEventListener('click', prevPage);
+        nextButton.addEventListener('click', nextPage);
+        
+        // 点击指示器切换页面
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToPage(index);
+            });
+        });
+        
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevPage();
+            } else if (e.key === 'ArrowRight') {
+                nextPage();
+            }
+        });
+        
+        // 页面1的按钮点击事件
+        document.querySelector('.page-1 .frame').addEventListener('click', () => {
+            nextPage();
+        });
+        
+        // 页面6的箭头点击事件
+        document.querySelector('.page-6 .next-arrow').addEventListener('click', () => {
+            alert('✨ 继续探索你的个人轨迹...');
+        });
+        
+        // 初始化
+        initPages();
+        
+        // 添加页面加载动画
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

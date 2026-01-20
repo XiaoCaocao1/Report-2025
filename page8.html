@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度学习报告 - 第8页</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0a0a1a;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        /* 页面容器 */
+        .page-container {
+            width: 375px;
+            height: 812px;
+            position: relative;
+            background: white;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        /* 背景图片 */
+        .bg-image {
+            width: 375px;
+            height: 812px;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            object-fit: cover;
+        }
+        
+        /* 书本 */
+        .book-image {
+            width: 90%;
+            height: 90%;
+            left: 40px;
+            top:270px;
+            position: absolute;
+            object-fit: contain;
+            z-index:100;
+        }
+        
+        /* 文本样式 */
+        .text-year {
+            left: 35px;
+            top: 111px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .text-time {
+            left: 35px;
+            top: 201px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 50px;
+        }
+        
+        .text-study {
+            left: 35px;
+            top: 261px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 28px;
+        }
+        
+        .text-detail {
+            left: 35px;
+            top: 346px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        .text-quote {
+            left: 35px;
+            top: 523px;
+            position: absolute;
+            color: white;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        
+        /* 字体定义 */
+        .font-regular {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        .font-decorative {
+            font-family: Georgia, "Times New Roman", serif;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 400px) {
+            .page-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 背景图片 -->
+        <img class="bg-image" src="assets/page8/bg.png" alt="背景图片">
+        
+        <!-- 圆形装饰图片 -->
+        <img class="book-image" src="assets/page8/book.png" alt="书本图片">
+        
+        <!-- 文本内容 -->
+        <div class="text-year font-regular">
+            这一年<br/>你最喜欢在
+        </div>
+        
+        <div class="text-time font-decorative">
+            深夜
+        </div>
+        
+        <div class="text-study font-regular">
+            学习
+        </div>
+        
+        <div class="text-detail font-decorative">
+            2025年12月12日<br/>你在深夜2点18分<br/>提交《微积分》作业
+        </div>
+        
+        <div class="text-quote font-decorative">
+            万籁俱寂时<br/>思想的声音最为清晰动人
+        </div>
+    </div>
+</body>
+</html>
