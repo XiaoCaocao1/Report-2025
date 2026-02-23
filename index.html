@@ -4,10 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025年度学习报告part1</title>
-    <link rel="stylesheet" href="Report_style.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .student-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+        }
+        .student-modal-box {
+            background: linear-gradient(145deg, #2d2d3a 0%, #1a1a24 100%);
+            border-radius: 16px;
+            padding: 28px 32px;
+            min-width: 280px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .student-modal-title {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .student-modal-input {
+            display: block;
+            width: 100%;
+            height: 44px;
+            padding: 0 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .student-modal-input::placeholder { color: rgba(255,255,255,0.4); }
+        .student-modal-input:focus { outline: none; border-color: #ffd54f; }
+        .student-modal-btn {
+            display: block;
+            width: 100%;
+            height: 44px;
+            margin-bottom: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #ffd54f;
+            color: #1a1a24;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .student-modal-btn:hover { background: #ffea6e; }
+        .student-modal-skip {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .student-modal-skip:hover { color: #fff; }
+        .student-modal.hidden { display: none; }
+    </style>
 </head>
 
 <body>
+    <!-- 学号输入弹窗（腾讯云假数据演示用） -->
+    <div id="studentModal" class="student-modal">
+        <div class="student-modal-box">
+            <div class="student-modal-title">请输入学号体验</div>
+            <input type="text" id="studentIdInput" placeholder="如：20230001" class="student-modal-input" autocomplete="off">
+            <button type="button" onclick="loadData()" class="student-modal-btn">生成报告</button>
+            <button type="button" onclick="closeModalAndEnter()" class="student-modal-skip">直接进入</button>
+        </div>
+    </div>
+
     <div class="report-container">
         <!-- 页面1 -->
         <div class="page page-1 active">
@@ -296,8 +373,8 @@
         </div>
             
             <!-- 导航按钮 -->
-            <div class="nav-button prev-button">‹</div>
-            <div class="nav-button next-button">›</div>
+            <div class="nav-button prev-button" style="display: none !important;">‹</div>
+            <div class="nav-button next-button" style="display: none !important;">›</div>
             
             <!-- 页面指示器 -->
             <div class="page-indicator">
@@ -541,7 +618,7 @@
 
         </div>
         
-    <script src="Reprot_script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "20230001": {
+    "name": "张三",
+    "total_visits": 4364900,
+    "homework_count": 554426,
+    "ai_count": 36288
+  },
+  "20230002": {
+    "name": "李四",
+    "total_visits": 1200,
+    "homework_count": 45,
+    "ai_count": 12
+  },
+  "20230003": {
+    "name": "王五",
+    "total_visits": 8920,
+    "homework_count": 132,
+    "ai_count": 48
+  }
+}

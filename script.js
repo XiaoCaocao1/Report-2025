@@ -1,3 +1,57 @@
+// 加载本地假数据并根据学号生成报告（腾讯云演示用）
+function loadData() {
+    const input = document.getElementById('studentIdInput');
+    if (!input) {
+        alert('页面未找到学号输入框，请稍后重试。');
+        return;
+    }
+
+    const studentId = input.value.trim();
+    if (!studentId) {
+        alert('请输入学号再生成报告');
+        input.focus();
+        return;
+    }
+
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('网络错误：' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const studentData = data[studentId];
+            if (!studentData) {
+                alert('测试版仅支持学号：20230001、20230002、20230003');
+                return;
+            }
+
+            // 暂存当前学生数据，后续如需在各页替换数字可复用
+            window.studentData = studentData;
+
+            closeStudentModal();
+            alert(`欢迎你，${studentData.name}！数据加载成功，即将进入报告！`);
+            nextPage();
+        })
+        .catch(error => {
+            console.error('加载数据失败:', error);
+            alert('加载数据失败，请稍后重试');
+        });
+}
+
+// 关闭学号弹窗
+function closeStudentModal() {
+    const modal = document.getElementById('studentModal');
+    if (modal) modal.classList.add('hidden');
+}
+
+// 弹窗内「直接进入」：关闭弹窗并进入下一页
+function closeModalAndEnter() {
+    closeStudentModal();
+    nextPage();
+}
+
 // 页面管理
 const pages = document.querySelectorAll('.page');
 const dots = document.querySelectorAll('.indicator-dot');
@@ -32,17 +86,8 @@ function updateDots() {
 
 // 更新按钮状态
 function updateButtons() {
-    if (currentPage === 0) {
-        prevButton.style.display = 'none';
-    } else {
-        prevButton.style.display = 'flex';
-    }
-    
-    if (currentPage === pages.length - 1) {
-        nextButton.style.display = 'none';
-    } else {
-        nextButton.style.display = 'flex';
-    }
+    if (prevButton) prevButton.style.display = 'none';
+    if (nextButton) nextButton.style.display = 'none';
 }
 
 // 切换到指定页面
@@ -344,8 +389,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 页面1的按钮点击事件
+    // 页面1的按钮点击事件（点击封面也关闭弹窗并进入）
     document.querySelector('.page-1 .frame')?.addEventListener('click', () => {
+        closeStudentModal();
         nextPage();
     });
     
@@ -368,7 +414,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!event.target.classList.contains('indicator-dot') && 
             !event.target.classList.contains('prev-button') && 
             !event.target.classList.contains('next-button')) {
-            nextPage();
+            
+            // 获取点击位置的X坐标
+            const clickX = event.clientX;
+            // 获取屏幕宽度的一半
+            const halfWidth = window.innerWidth / 2;
+            
+            // 如果点击在左半边，上一页；如果点击在右半边，下一页
+            if (clickX < halfWidth) {
+                prevPage();
+            } else {
+                nextPage();
+            }
         }
     });
     
